@@ -1,13 +1,36 @@
+# ==========================================
+# WM 2026 Intelligence Bot
+#
+# What this script does:
+#
+# 1. Load environment variables (.env)
+# 2. Connect to Google Sheets
+# 3. Read football RSS feeds
+# 4. Parse latest football news
+# 5. Detect important keywords
+# 6. Prevent duplicate entries
+# 7. Write news into Google Sheets
+# 8. Send Telegram alerts
+#
+# Output:
+# - News tab updated
+# - Alerts tab updated
+# - Telegram notifications
+#
+# ==========================================
 import os
 from datetime import datetime, timezone
 
 import feedparser
 import gspread
 import requests
-from dotenv import load_dotenv
 from oauth2client.service_account import ServiceAccountCredentials
+from pathlib import Path
+from dotenv import load_dotenv
 
-load_dotenv()
+env_path = Path(__file__).resolve().parent.parent / ".env"
+load_dotenv(dotenv_path=env_path)
+
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
