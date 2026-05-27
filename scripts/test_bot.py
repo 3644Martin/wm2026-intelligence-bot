@@ -1,13 +1,18 @@
 import requests
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 
 # =========================
 # TELEGRAM
 # =========================
 
-BOT_TOKEN = "8954365774:AAHEUSzyaZtHDpurIEdGZ3-1XPhLxu-ihvk"
-CHAT_ID = "6624173034"
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+CHAT_ID = os.getenv("CHAT_ID")
 
 message = "⚽ WM 2026 Intelligence Bot erfolgreich verbunden!"
 
